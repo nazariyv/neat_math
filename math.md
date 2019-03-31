@@ -11,4 +11,7 @@
 - $f(x) \sim g(x)$ means $\lim_{x \to a} \frac{f(x)}{g(x)} = c$
 
 
+# Oh Glorious People Who Created this
 
+- Interneting is hard is a series of HTML & CSS tutorials that are kicking ass:
+https://internetingishard.com/html-and-css
