@@ -17,6 +17,23 @@
     $n, n-1, n-2, ..., 3, 2, 1$ number of times. This is $n(n+1)/2$. Thus $\mathcal{O}(n^2)$
   - Imagine you have a sorted array. This is log time. Divide and conquer
 
+
+
+# Oh Glorious Problems (not exercises)
+
+- **Remember**: logic is king. Make small sound logical steps when solving anything. If every step is correct, you will arrive at a solution. Do not get discouraged if you fail. Sometimes you need to try a number of approaches to solve a problem.
+- 1. A census-taker knocks on a door, and asks the woman inside how
+     many children she has and how old they are.
+     "I have three daughters, their ages are whole numbers, and the product of the ages
+     is 36," says the mother.
+     "That's not enough information," responds the census-taker.
+     "I'd tell you the sum of their ages, but you 'd still be stumped."
+     "I wish you 'd tell me something more."
+     "Okay, my oldest daughter Annie likes dogs."
+     What are the ages of the three daughters? 
+
+
+
 # Oh Glorious People Who Created this
 
 - Interneting is hard - is a series of HTML & CSS tutorials that are kicking ass:
