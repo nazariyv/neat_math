@@ -16,6 +16,7 @@
   - example. Nested loop. `for (i=0; i<n; i++) { for (j=i; j<n; j++) }`. Notice that the inner loop runs:
     $n, n-1, n-2, ..., 3, 2, 1$ number of times. This is $n(n+1)/2$. Thus $\mathcal{O}(n^2)$
   - Imagine you have a sorted array. This is log time. Divide and conquer
+- How many times can you split 32 into even parts? $2^5$, $5$ times. $\log_2 (32) = 5$, that is why divide and conquer is $\mathcal{O}(\log n)$. Merge sort is $\mathcal{O}(n \log n)$ because you also do $\mathcal{O}(n)$ operations when mergin sorted arrays. (check out the code in the python scripts folder and the exercise below).
 
 
 
@@ -32,7 +33,43 @@
      "Okay, my oldest daughter Annie likes dogs."
      What are the ages of the three daughters? 
 
+# Exercises
 
+1. Merge two sorted arrays:
+
+   ```python
+   arr1, arr2 = [1, 5, 9], [2, 3, 11, 18]
+   len1, len2 = len(arr1), len(arr2)
+   merge_sorted = []
+   ix1, ix2 = 0, 0
+   
+   # idea is to go through element in arr1 and compare it to element in arr2
+   # ix1 = 0, ix2 = 0. if arr1[ix1] >= arr2[ix2]: merge_sorted.push[arr2[ix2]] and ix2++
+   # else merge_sorted.push[arr1[ix1]] and ix1++
+   while (ix1 != len1 and ix2 != len2): # O(n), where n is the length of combined list
+     if arr1[ix1] >= arr2[ix2]:
+       merge_sorted.append(arr2[ix2]) # O(1)
+       ix2 += 1 # O(1)
+     else:
+       marge_sorted.append(arr1[ix1])
+       ix1 += 1
+   
+   # finalize, constant time O(1)
+   if len2 > len1:
+     merge_sorted += arr2[ix2:]
+   elif len1 > len2:
+     merge_sorted += arr1[ix1:]
+   else:
+     val1, val2 = arr1.pop(), arr2.pop()
+     if merge_sorted[-1] == val1:
+       merge_sorted.append(val2)
+     else:
+       merge_sorted.append(val1)
+       
+   # merge two sorted arrays time complexity: O(n)
+   ```
+
+   
 
 # Oh Glorious People Who Created this
 
