@@ -1,6 +1,6 @@
 # Oh Glorious Maths
 
-- **Discretizing** a pdf: $f(x) dx = \mathbb{P}[x \leq X < x + dx]$
+- **Discretizing** a pdf: $f(x) dx = \mathbb{P}[x \leq X < x + dx]​$
 - **Combinatorics**: How many unique pairs from $5$ can you choose:
   - $5 \choose 2​$ is
 
@@ -33,7 +33,9 @@
      "Okay, my oldest daughter Annie likes dogs."
      What are the ages of the three daughters? 
 
-# Exercises
+# Exercises (CS)
+
+**Arrays**
 
 1. Merge two sorted arrays:
 
@@ -67,6 +69,47 @@
        merge_sorted.append(val1)
        
    # merge two sorted arrays time complexity: O(n)
+   ```
+
+   2. Find first non-repeating integer in an array. 
+
+   ```python
+   arr1 = [1, 1, 1, 2, 5, 5]
+   prevVal = arr1[0]
+   
+   some_func:
+     for ix, elem in enumerate(arr1):
+       if elem != prevVal:
+         return ix
+       else:
+         continue
+       return -1
+   
+   # O(n) - worst case
+   ```
+
+3. Find the second minimum element of an array. Trivial, instead of having one variable for the min, have two: `min1` and `min2`.
+
+4. Perform merge sort on $[1, 20, 3, 12, 5, 9, 10, 2]​$.
+
+5. Rearrange negative and positive numbers such that the neg. numbers appear on the left and positive are on the right. The order should be preserved. Do not use additional data structures. Do it in $\mathcal{O}(n)​$. For $[1, 7, -5, 9, -12, 15]​$ as an example. Output is supposed to be like: $[-5, -12, 1, 7, 9, 15]​$.
+
+   ```Python
+   # pseudocode:
+   # loop through each element until first negative val is found
+   # pop it from the list and place it in the zeroth index
+   # loop until you find second, pop it and place it in the first index
+   # repeat until you are at the last index.
+   
+   # if the initial value is negative, great; if not, we will shift it
+   # for ix = 1 until i = len(arr) - 1  O(N-1) = O(N)
+   # if arr[ix] < 0:
+   #		val = arr.pop(ix)  O(1)
+   #		arr = arr[:prev_neg_idx] + [val] + arr[prev_neg_idx:] O(1)
+   #	  prev_neg_idx += 1 O(1)
+   # return
+   
+   # O(N)
    ```
 
    
