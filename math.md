@@ -18,7 +18,29 @@
   - Imagine you have a sorted array. This is log time. Divide and conquer
 - How many times can you split 32 into even parts? $2^5$, $5$ times. $\log_2 (32) = 5$, that is why divide and conquer is $\mathcal{O}(\log n)$. Merge sort is $\mathcal{O}(n \log n)$ because you also do $\mathcal{O}(n)$ operations when mergin sorted arrays. (check out the code in the python scripts folder and the exercise below).
 
+# Oh Glorious CS
 
+- LIFO vs FIFO
+  - LIFO: 1 -> 2 -> 3. [1, 2, 3]. Last in is 3, it is the first out. Then 2. Then 1.
+  - FIFO: 1 -> 2 -> 3. [1, 2, 3]. First in is 1, it is the first out. Then 2. Then 3.
+
+- Stack - an abstract data type. Follows LIFO pattern. 
+
+  <img src="https://cdn-images-1.medium.com/max/1600/0*wTbA-8eCwNNefSlJ" style="display: block; margin: 0 auto; width:600px" />
+
+  - basic operations are: pop, isEmpty, peek/top, push
+
+- Queue - also a linear abstract data type like a stack. This is literally a queue. FIFO. You push to the back and pop from the top. Unlike stacks where you push to the top and pop from the top. Common operations: enqueue (inserts an element to the back), dequeue (removes an element from the start of the queue), isEmpty, top
+
+- Linked List
+
+- Graph
+
+- Tree
+
+- Trie
+
+- Hash Table
 
 # Oh Glorious Problems (not exercises)
 
@@ -92,9 +114,9 @@
 
 4. Perform merge sort on $[1, 20, 3, 12, 5, 9, 10, 2]​$.
 
-5. Rearrange negative and positive numbers such that the neg. numbers appear on the left and positive are on the right. The order should be preserved. Do not use additional data structures. Do it in $\mathcal{O}(n)​$. For $[1, 7, -5, 9, -12, 15]​$ as an example. Output is supposed to be like: $[-5, -12, 1, 7, 9, 15]​$.
+5. Rearrange negative and positive numbers such that the neg. numbers appear on the left and positive are on the right. The order should be preserved. Do not use additional data structures. Do it in $\mathcal{O}(n)$. For $[1, 7, -5, 9, -12, 15]$ as an example. Output is supposed to be like: $[-5, -12, 1, 7, 9, 15]​$.
 
-   ```Python
+   ```
    # pseudocode:
    # loop through each element until first negative val is found
    # pop it from the list and place it in the zeroth index
@@ -112,9 +134,65 @@
    # O(N)
    ```
 
+**Stacks**
+
+1. Evaluate postfix expressions using a stack. Examples of postfix expressions: $5 \, 1 \, 2 + 4 \times \, + \,3 −$, $A B C \times +$, $2 3 1 \times + 9 -$
+
+   ```
+   # initial thoughts
+   # i. you always perform an operation on two operands
+   # ii. you push the operands into the stack as long as you have not met an operator
+   # iii. ii \implies that you need to hardcode all of the operands
+   # iv. once you have met the operator, perform it's operation on the two popd operands.
+   # v. continue
+   ```
+
    
+
+2. Sort values in a stack
+
+   ```
+   # initial thoughts
+   # turn a stack into a list
+   # merge sort
+   # turn back into a stack
+   ```
+
+   
+
+3. Check balanced parentheses in an expression. Examples: 
+
+   ```
+   {[()]}
+   {[(])}
+   {{[[(())]]}}
+   
+   # initial thoughts
+   # you need a balance map. And you need to check if the current char is is the balance of the peek. If it is then pop and continue to the next char. Trivial
+   ```
+
+**Queues**
+
+1. Implement stack using a queue
+2. Reverse first k elements of the queue
+3. Generate binary numbers from 1 to n using a queue
+
+
+
+**Linked List**
+
+**Graphs**
+
+**Trees**
+
+**Trie**
+
+**Hash Table**
+
+
 
 # Oh Glorious People Who Created this
 
 - Interneting is hard - is a series of HTML & CSS tutorials that are kicking ass:
   https://internetingishard.com/html-and-css
+- Linked I used for some of the exercises in the CS section: https://medium.freecodecamp.org/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3

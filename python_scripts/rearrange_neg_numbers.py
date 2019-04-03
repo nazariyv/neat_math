@@ -2,6 +2,7 @@
 from typing import List
 import numpy as np
 from copy import deepcopy as dc
+import time
 
 def rearrange_neg_pos(arr: List[int]):
     arr = dc(arr)
@@ -18,4 +19,6 @@ def rearrange_neg_pos(arr: List[int]):
 if __name__ == '__main__':
     arr = [1, 7, -5, 9, -12, 15]
     print(f'Rearranging: {arr}')
-    print(f'Rearranged: {rearrange_neg_pos(arr)}')
+    start = time.time()
+    rearranged_list = rearrange_neg_pos(arr)
+    print(f'Rearranged: {rearrange_neg_pos(arr)}, it took: {time.time()-start}')
