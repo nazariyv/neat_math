@@ -12,9 +12,9 @@
 - **Big-O** sorted (from fastest to slowest; big o is the asymptotic runtime): $\mathcal{O}(1)$ (constant time), $\mathcal{O}(\log N)$ (log time; divide and conquer), $\mathcal{O}(N)$ (linear time), $\mathcal{O}(N \log N)$ (merge search), | $\mathcal{O}(N^2)$ (quadric time), $\mathcal{O}(2^N)$ (exponential time; going through all of the subsets of a set), $\mathcal{O}(N!)$ (finding all permutations of a string), $\mathcal{O}(\infty)$ (flipping coin). Useful <a href='<https://www.youtube.com/watch?v=zUUkiEllHG0&t=>'>video code examples</a>. 
   - Definition: for some $n \geq n_1​$, $f(n) = \mathcal{O}(g(n))​$ means: $|f(n)| \leq c|g(n)|​$ for some $c \in \mathbb{R}​$
   - some properties. $\mathcal{O}(c + n) = \mathcal{O}(n)$ for some $c > 0$.
-  - $c \mathcal{O}(n) = \mathcal{O}(n)$
+  - $c \mathcal{O}(n) = \mathcal{O}(n)​$
   - example. Nested loop. `for (i=0; i<n; i++) { for (j=i; j<n; j++) }`. Notice that the inner loop runs:
-    $n, n-1, n-2, ..., 3, 2, 1$ number of times. This is $n(n+1)/2$. Thus $\mathcal{O}(n^2)$
+    $n, n-1, n-2, ..., 3, 2, 1​$ number of times. This is $n(n+1)/2​$. Thus $\mathcal{O}(n^2)​$
   - Imagine you have a sorted array. This is log time. Divide and conquer
 - How many times can you split 32 into even parts? $2^5$, $5$ times. $\log_2 (32) = 5$, that is why divide and conquer is $\mathcal{O}(\log n)$. Merge sort is $\mathcal{O}(n \log n)$ because you also do $\mathcal{O}(n)$ operations when mergin sorted arrays. (check out the code in the python scripts folder and the exercise below).
 
@@ -134,6 +134,24 @@
    # O(N)
    ```
 
+6. Find the min of an array
+7. Find the second min of an array
+8. Find the nth min of the array in O(n) time. $[10, 2, 5, 6, 11, 3, 15]​$ think about placing a $10​$: $[2,5,6,3,10,11,15]​$ <- this is a correct index for $10​$. 
+
+```
+# initial thoughts
+# [10, 2, 5, 6, 11, 3, 15] -> [2,5,6,3,10,11,15]
+# if you can do this, then you are done. Because 10 is in the right index.
+# so loop through the whole list and place the first element in the correct position
+# if the element's position is larger than m, repeat in the right half
+# if the element's position is less than m, repeat in the left half
+# the average case for this algorithm is O(N) !!! Because you do:
+# n + n/2 + n/4 + n/8 + ... = 2n
+# compare this to merge sort's n log n.
+```
+
+
+
 **Stacks**
 
 1. Evaluate postfix expressions using a stack. Examples of postfix expressions: $5 \, 1 \, 2 + 4 \times \, + \,3 −$, $A B C \times +$, $2 3 1 \times + 9 -$
@@ -174,12 +192,63 @@
 **Queues**
 
 1. Implement stack using a queue
+   - Stack is like this -> (end here) 3, 2, 1 (top here) -> Where 1 was the first to come in. You push to the end. Flow out of top.
+   - Queue is like this -> (end here) 3, 2, 1 (top here)  -> BUT, you push to the top. Flow out of top.
+
+```
+# You start with a queue. And need to convert it into a stack. Stack is LIFO, and queue is FIFO. So it should be a matter of turning LIFO into FIFO.
+# What does this mean?
+# It means that instead of putting things to the back, you put them to the top.
+```
+
 2. Reverse first k elements of the queue
-3. Generate binary numbers from 1 to n using a queue
 
+```
+# Initial thoughts. 
+# Queue's dequeue takes the elements from the top.
+# It appends to the bottom, though.
+# We need to dequeue the whole queue first
+# We then need to reverse the first k elements
+# And queue them in this reversed order
+# Queue the remaining ones in their original dequeued order
 
+# Example
+# [1, 3, 8, 0, 2]
+# dequeue first 3 elements
+# 2 dequeued and appended to list, 0 dequeued and appended to list, 8 dequeued and appended to list. The list is: [2, 0, 8]
+# keep dequeing, but do not append to the above list: [3, 1]
+# now construct a new Queue:
+# [2, 0, 8] start enqueueing from the last index to the first one
+# [3, 1] enqueue from 0 index to the last
+
+This is n operations to dequeue everything and then n operations to enqueue.
+O(n).
+```
+
+3. Generate binary numbers from 1 to n using a queue (*)
+
+```
+# initial thoughts
+# first let's have a look at these
+# 1 10 11 100 101 110 111 1000 1001 1010 1100 1101 1110 1111
+# 1 2  3  4   5   6   7   8
+# Check this pattern.
+# You have 1. Then you have 1 with a zero and a one: 10, 11. Then you have 10 with a zero and a one. Then you have 11 with a zero and a one. etc.
+# This is O(1) time.
+
+|_ Create an empty Queue.
+|_ Push first value inside it as 1.
+|_ Now run a loop for n times and follow below mentioned steps
+      |_ Dequeue an item and print the number
+      |_ Append "0" in the dequeued number and enqueue it in the Queue.
+      |_ Append "1" in the dequeued number and enqueue it in the Queue.
+```
+
+The above is super cool! And is O(n)
 
 **Linked List**
+
+
 
 **Graphs**
 
