@@ -24,6 +24,10 @@
   - LIFO: 1 -> 2 -> 3. [1, 2, 3]. Last in is 3, it is the first out. Then 2. Then 1.
   - FIFO: 1 -> 2 -> 3. [1, 2, 3]. First in is 1, it is the first out. Then 2. Then 3.
 
+- Data Structures:
+
+  <img src="https://www.studytonight.com/data-structures/images/introduction-to-data-structures.gif" />
+
 - Stack - an abstract data type. Follows LIFO pattern. 
 
   <img src="https://cdn-images-1.medium.com/max/1600/0*wTbA-8eCwNNefSlJ" style="display: block; margin: 0 auto; width:600px" />
@@ -33,6 +37,15 @@
 - Queue - also a linear abstract data type like a stack. This is literally a queue. FIFO. You push to the back and pop from the top. Unlike stacks where you push to the top and pop from the top. Common operations: enqueue (inserts an element to the back), dequeue (removes an element from the start of the queue), isEmpty, top
 
 - Linked List
+
+  <img src="https://cdn-images-1.medium.com/max/1600/0*gL13qpd_LbZnix1-" />
+
+  - *InsertAtEnd* — Inserts given element at the end of the linked list
+  - *InsertAtHead* — Inserts given element at the start/head of the linked list
+  - *Delete* — Deletes given element from the linked list
+  - *DeleteAtHead* — Deletes first element of the linked list
+  - *Search* — Returns the given element from a linked list
+  - *isEmpty* — Returns true if the linked list is empty
 
 - Graph
 
@@ -55,7 +68,7 @@
      "Okay, my oldest daughter Annie likes dogs."
      What are the ages of the three daughters? 
 
-# Exercises (CS)
+# Problems (CS)
 
 **Arrays**
 
@@ -140,7 +153,7 @@
 
 ```
 # initial thoughts
-# [10, 2, 5, 6, 11, 3, 15] -> [2,5,6,3,10,11,15]
+# [10, 2, 5, 6, 11, 3, 15] -> [2, 5, 6, 3, 10, 11, 15]
 # if you can do this, then you are done. Because 10 is in the right index.
 # so loop through the whole list and place the first element in the correct position (this is n)
 # if the element's position is larger than m, repeat in the right half
@@ -257,10 +270,35 @@ The above is super cool! And is O(n)
 1. keep ids (references in memory) of the looped elements, and if we stumble on the same reference, then we know that we have a duplicate. This is not feasible because the list may be very large and in the limit we will be comparing each node to each node. So not feasible.O(n^2)
 2. If there is a loop then there is no last item, meaning there is no null pointer. This does not help as well. Because if there is a loop, we will never reach that end.
 3. If there is a loop then there will be two nodes pointing to the same node. We can keep a dict of id to number of incoming pointers. And if for any of these we want to update the counter to two, we know that we have a loop. Avoid the loop by breaking this link.
+^^
+Better: for lists of the type |, 9, O (| is normal, 9 means there is a loop at some point, 0 means there is a loop to the initial node). The following method should work (checking whether something is in a set is an O(1) operation on average). If the current node is not in the set, add it's reference in memory to it. Keep going until you find that the member is in the set. That means there is a loop.
 ````
 
-1. Return nth node from the end in al inked list
-2. Remove duplicates from a linked list
+3. Return Mth node from the end in a inked list
+
+```
+Trivial solution (perhaps there are better? The only better one I envisage is that when looping through elements you stop when you reach the nth element from the end. But you cannot know when to stop because you do not know the length of the linked list. If you do, then this algorithm woult be O(M) instead of O(N) where N > M):
+- loop through the linked list and append to the creted array.
+- once pointing at null: list[(list_len - 1) - M + 1] to get the Mth from the end linked list's node's data. Accessing an element by index like that is O(1). You can of course, turn the array into a dict where the value is the node. 
+```
+
+4. Remove duplicates from a linked list
+
+```
+- If we are not assuming primtive data types than we have to use a hashing function to encode the data of the node (for comparison purposes). From now onwards, the comparisons will be based either on hashed values or in case of primitives - directly.
+- There are a number of cases for duplicated values:
+1. You can have one duplicate of a single node
+2. You can have multiple duplicates of a single node
+3. You can have one and / or many duplicates of the same and / or different nodes.
+- Solution: 
+Create a set<hashes>
+for every node:
+	if node's hash not in set:
+		add node's hash to set
+	else:
+		remove this node
+		make prev's next current next
+```
 
 **Graphs**
 
@@ -271,6 +309,60 @@ The above is super cool! And is O(n)
 **Hash Table**
 
 
+
+# SO Q&A
+
+- How Fast is computing a hash?
+
+Generally speaking, computing a hash will be O(1) for "small" items and O(N) for "large" items (where "N" denotes the size of an item's key). The precise dividing line between small and large varies, but is typically somewhere in the general vicinity of the size of a register (e.g., 32 bits on a 32-bit machine, 64 bits on a 64-bit machine). This can also depend on the input type--for example, integer types up on the register size all hashing with constant complexity, but strings taking time proportional to the size in bytes, right down to a single character (i.e., a two-character string taking roughly twice the time of a single character string).
+
+Once you've computed the hash, accessing the hash table has expected constant complexity, but can be as bad as O(N) in the worst case (but this is a different "N"--the number of items inserted in the table, not the size of an individual key).
+
+- How hash tables work?
+
+Here's an explanation in layman's terms.
+
+Let's assume you want to fill up a library with books and not just stuff them in there, but you want to be able to easily find them again when you need them.
+
+So, you decide that if the person that wants to read a book knows the title of the book and the exact title to boot, then that's all it should take. With the title, the person, with the aid of the librarian, should be able to find the book easily and quickly.
+
+So, how can you do that? Well, obviously you can keep some kind of list of where you put each book, but then you have the same problem as searching the library, you need to search the list. Granted, the list would be smaller and easier to search, but still you don't want to search sequentially from one end of the library (or list) to the other.
+
+You want something that, with the title of the book, can give you the right spot at once, so all you have to do is just stroll over to the right shelf, and pick up the book.
+
+But how can that be done? Well, with a bit of forethought when you fill up the library and a lot of work when you fill up the library.
+
+Instead of just starting to fill up the library from one end to the other, you devise a clever little method. You take the title of the book, run it through a small computer program, which spits out a shelf number and a slot number on that shelf. This is where you place the book.
+
+The beauty of this program is that later on, when a person comes back in to read the book, you feed the title through the program once more, and get back the same shelf number and slot number that you were originally given, and this is where the book is located.
+
+The program, as others have already mentioned, is called a hash algorithm or hash computation and usually works by taking the data fed into it (the title of the book in this case) and calculates a number from it.
+
+For simplicity, let's say that it just converts each letter and symbol into a number and sums them all up. In reality, it's a lot more complicated than that, but let's leave it at that for now.
+
+The beauty of such an algorithm is that if you feed the same input into it again and again, it will keep spitting out the same number each time.
+
+Ok, so that's basically how a hash table works.
+
+Technical stuff follows.
+
+First, there's the size of the number. Usually, the output of such a hash algorithm is inside a range of some large number, typically much larger than the space you have in your table. For instance, let's say that we have room for exactly one million books in the library. The output of the hash calculation could be in the range of 0 to one billion which is a lot higher.
+
+So, what do we do? We use something called modulus calculation, which basically says that if you counted to the number you wanted (i.e. the one billion number) but wanted to stay inside a much smaller range, each time you hit the limit of that smaller range you started back at 0, but you have to keep track of how far in the big sequence you've come.
+
+Say that the output of the hash algorithm is in the range of 0 to 20 and you get the value 17 from a particular title. If the size of the library is only 7 books, you count 1, 2, 3, 4, 5, 6, and when you get to 7, you start back at 0. Since we need to count 17 times, we have 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, 4, 5, 6, 0, 1, 2, 3, and the final number is 3.
+
+Of course modulus calculation isn't done like that, it's done with division and a remainder. The remainder of dividing 17 by 7 is 3 (7 goes 2 times into 17 at 14 and the difference between 17 and 14 is 3).
+
+Thus, you put the book in slot number 3.
+
+This leads to the next problem. Collisions. Since the algorithm has no way to space out the books so that they fill the library exactly (or the hash table if you will), it will invariably end up calculating a number that has been used before. In the library sense, when you get to the shelf and the slot number you wish to put a book in, there's already a book there.
+
+Various collision handling methods exist, including running the data into yet another calculation to get another spot in the table ([double hashing](https://en.wikipedia.org/wiki/Double_hashing)), or simply to find a space close to the one you were given (i.e. right next to the previous book assuming the slot was available also known as [linear probing](https://en.wikipedia.org/wiki/Linear_probing)). This would mean that you have some digging to do when you try to find the book later, but it's still better than simply starting at one end of the library.
+
+Finally, at some point, you might want to put more books into the library than the library allows. In other words, you need to build a bigger library. Since the exact spot in the library was calculated using the exact and current size of the library, it goes to follow that if you resize the library you might end up having to find new spots for all the books since the calculation done to find their spots has changed.
+
+I hope this explanation was a bit more down to earth than buckets and functions :)
 
 # Oh Glorious People Who Created this
 
