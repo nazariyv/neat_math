@@ -250,6 +250,17 @@ The above is super cool! And is O(n)
 **Linked List**
 
 1. Implement in-place reversal of a singly linked list.
+2. Detect a loop in a linked list
+
+````
+# Initial thoughts
+1. keep ids (references in memory) of the looped elements, and if we stumble on the same reference, then we know that we have a duplicate. This is not feasible because the list may be very large and in the limit we will be comparing each node to each node. So not feasible.O(n^2)
+2. If there is a loop then there is no last item, meaning there is no null pointer. This does not help as well. Because if there is a loop, we will never reach that end.
+3. If there is a loop then there will be two nodes pointing to the same node. We can keep a dict of id to number of incoming pointers. And if for any of these we want to update the counter to two, we know that we have a loop. Avoid the loop by breaking this link.
+````
+
+1. Return nth node from the end in al inked list
+2. Remove duplicates from a linked list
 
 **Graphs**
 
