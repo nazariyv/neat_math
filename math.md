@@ -142,9 +142,10 @@
 # initial thoughts
 # [10, 2, 5, 6, 11, 3, 15] -> [2,5,6,3,10,11,15]
 # if you can do this, then you are done. Because 10 is in the right index.
-# so loop through the whole list and place the first element in the correct position
+# so loop through the whole list and place the first element in the correct position (this is n)
 # if the element's position is larger than m, repeat in the right half
 # if the element's position is less than m, repeat in the left half
+# the above step is n / 2. So there is recursion.
 # the average case for this algorithm is O(N) !!! Because you do:
 # n + n/2 + n/4 + n/8 + ... = 2n
 # compare this to merge sort's n log n.
@@ -248,7 +249,7 @@ The above is super cool! And is O(n)
 
 **Linked List**
 
-
+1. Implement in-place reversal of a singly linked list.
 
 **Graphs**
 
