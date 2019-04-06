@@ -9,7 +9,7 @@
 - **Permutations**: 3! = 3 * 2 * 1. How many permutations can you have? Suppose you have a banana, an apple, and a carrot. You can eat them in the following sequences: ABC, BAC, CAB, ACB, BCA, CBA; i.e. 6 in total. You start off by choosing when to eat an apple, three possibilities (you eat it first, second or third), once that is chosen, you have two possibilities of choosing when to eat a banana (if you decided to eat an apple first, then banana can be second or third; if you decided to eat an apple second, then banana can be first or last; if you choose to eat an apple last, then banana can be first or second; i.e. in each case, you have two options). Finally, once the order of eating an apple and banana is chosen, there is only one position for a carrot. Eat your veggies. 
 - $f(x) \sim g(x)$ means $\lim_{x \to a} \frac{f(x)}{g(x)} = c$
 - $\log_{b}(a) = c \iff b^c = a$
-- **Big-O** sorted (from fastest to slowest; big o is the asymptotic runtime): $\mathcal{O}(1)$ (constant time), $\mathcal{O}(\log N)$ (log time; divide and conquer), $\mathcal{O}(N)$ (linear time), $\mathcal{O}(N \log N)$ (merge search), | $\mathcal{O}(N^2)$ (quadric time), $\mathcal{O}(2^N)$ (exponential time; going through all of the subsets of a set), $\mathcal{O}(N!)$ (finding all permutations of a string), $\mathcal{O}(\infty)$ (flipping coin). Useful <a href='<https://www.youtube.com/watch?v=zUUkiEllHG0&t=>'>video code examples</a>. 
+- **Big-O** sorted (from fastest to slowest; big o is the asymptotic runtime): $\mathcal{O}(1)$ (constant time), $\mathcal{O}(\log N)$ (log time; divide and conquer), $\mathcal{O}(N)$ (linear time), $\mathcal{O}(N \log N)$ (merge search), | $\mathcal{O}(N^2)$ (quadric time), $\mathcal{O}(2^N)$ (exponential time; going through all of the subsets of a set), $\mathcal{O}(N!)$ (finding all permutations of a string), $\mathcal{O}(\infty)$ (flipping coin). Useful <a href='https://www.youtube.com/watch?v=zUUkiEllHG0&t='>video code examples</a>. 
   - Definition: for some $n \geq n_1​$, $f(n) = \mathcal{O}(g(n))​$ means: $|f(n)| \leq c|g(n)|​$ for some $c \in \mathbb{R}​$
   - some properties. $\mathcal{O}(c + n) = \mathcal{O}(n)$ for some $c > 0$.
   - $c \mathcal{O}(n) = \mathcal{O}(n)​$
@@ -17,6 +17,7 @@
     $n, n-1, n-2, ..., 3, 2, 1​$ number of times. This is $n(n+1)/2​$. Thus $\mathcal{O}(n^2)​$
   - Imagine you have a sorted array. This is log time. Divide and conquer
 - How many times can you split 32 into even parts? $2^5$, $5$ times. $\log_2 (32) = 5$, that is why divide and conquer is $\mathcal{O}(\log n)$. Merge sort is $\mathcal{O}(n \log n)$ because you also do $\mathcal{O}(n)$ operations when mergin sorted arrays. (check out the code in the python scripts folder and the exercise below).
+- In base 10, a fraction converts to a terminating decimal if and only if the denominator only has prime factors of 2 and 5.
 
 # Oh Glorious CS
 
@@ -48,6 +49,18 @@
   - *isEmpty* — Returns true if the linked list is empty
 
 - Graph
+
+  Is a collection of nodes/vertices connected through edges.
+
+  <img src="https://cdn-images-1.medium.com/max/1600/0*sWw9AAKt8YfUzIku"/>
+
+  A graph can be represented either through adjacency list or a matrix:
+
+  <img src="./static/images/graph_adjacency_list_or_matrix.png" alt="credit for: [Graph Representation part 03 - Adjacency List - YouTube](https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjR4r2xybvhAhWw4IUKHVK_AdwQjhx6BAgBEAM&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dk1wraWzqtvQ&psig=AOvVaw1sLLd51IVLrkfIodjnVH-s&ust=1554643703109955)" />
+
+  BFS and DFS algorithms taken from <a href="https://medium.com/basecs/breaking-down-breadth-first-search-cebe696709d9" alt="credit for: 'https://medium.com/basecs/breaking-down-breadth-first-search-cebe696709d9'">Medium</a>:
+
+  <img src="https://cdn-images-1.medium.com/max/2600/1*VM84VPcCQe0gSy44l9S5yA.jpeg" />
 
 - Tree
 
@@ -272,7 +285,28 @@ The above is super cool! And is O(n)
 3. If there is a loop then there will be two nodes pointing to the same node. We can keep a dict of id to number of incoming pointers. And if for any of these we want to update the counter to two, we know that we have a loop. Avoid the loop by breaking this link.
 ^^
 Better: for lists of the type |, 9, O (| is normal, 9 means there is a loop at some point, 0 means there is a loop to the initial node). The following method should work (checking whether something is in a set is an O(1) operation on average). If the current node is not in the set, add it's reference in memory to it. Keep going until you find that the member is in the set. That means there is a loop.
+Drawback of the above is that you need O(N) space.
+4. Best solution: using the hare and tortoise algorithm.
 ````
+
+Hare and tortoise algorithm:
+
+```python
+def detect_cycle(head):
+    tortoise = head
+    hare = head
+
+    while hare:
+        tortoise = tortoise.next
+        hare = hare.next
+        if hare:
+            hare = hare.next
+            if tortoise is hare:
+                return True
+    return False
+```
+
+A good <a href="https://ivanyu.me/blog/2013/11/24/finding-a-cycle-in-a-linked-list/">link</a> that explains this algorithm.
 
 3. Return Mth node from the end in a inked list
 
@@ -301,6 +335,11 @@ for every node:
 ```
 
 **Graphs**
+
+1. Implement BFS and DFS searches. (DFS can be written as a recursive function)
+2. Check if a graph is a tree or not.
+3. Count number of edges in a graph
+4. Find the shortest path between two vertices
 
 **Trees**
 
