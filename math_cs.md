@@ -68,6 +68,10 @@
 
 - Hash Table
 
+A big chart of complexities for all of these data structures:
+
+
+
 # Oh Glorious Problems (not exercises)
 
 - **Remember**: logic is king. Make small sound logical steps when solving anything. If every step is correct, you will arrive at a solution. Do not get discouraged if you fail. Sometimes you need to try a number of approaches to solve a problem.
@@ -177,8 +181,6 @@
 # compare this to merge sort's n log n.
 ```
 
-
-
 **Stacks**
 
 1. Evaluate postfix expressions using a stack. Examples of postfix expressions: $5 \, 1 \, 2 + 4 \times \, + \,3 −$, $A B C \times +$, $2 3 1 \times + 9 -$
@@ -192,8 +194,6 @@
    # v. continue
    ```
 
-   
-
 2. Sort values in a stack
 
    ```
@@ -202,8 +202,6 @@
    # merge sort
    # turn back into a stack
    ```
-
-   
 
 3. Check balanced parentheses in an expression. Examples: 
 
@@ -336,10 +334,52 @@ for every node:
 
 **Graphs**
 
-1. Implement BFS and DFS searches. (DFS can be written as a recursive function)
+1. Implement BFS and DFS searches/traversals. (DFS can be written as a recursive function)
+
+```
+Initial Thoughts
+
+BFS.
+(You traverse the adjacent nodes first)
+For both directed and undirected graphs.
+1. Pick a node. If it is not in a set of visited nodes, add it.
+2. For each adjacent node, check if we have visisted it, if not, then enqueue them.
+3. Dequeue a node. Add it to a list of visited notes. Go to step 2.
+
+What happens if we have a cycle? This would only happen in a directed graph.To avoid the cycle in such a case, before we enqueue a node we need to determine if we have visited it. If we have, then do not enqueue it.
+
+DFS.
+(You traverse a path until there is nothing to traverse)
+
+Undirected & Directed graphs.
+1. Pick a node. Add it to a set of visited nodes.
+2. For each adjacent node, if the node is not in visited nodes, stack it.
+3. Pop a node. Go to step 2.
+```
+
 2. Check if a graph is a tree or not.
+
+A graph can have cycles, but a tree can not. Therefore, if we traverse to the same node, we know that we have a  graph. Otherwise, it's a tree. How do you determine if there are cycles? Keep a set of visited nodes. Space complexity is O(N) where N is the number of nodes.
+
 3. Count number of edges in a graph
+
+```
+Initial thoughts
+For undirected graphs
+1. You do a BFS, DFS. When you traverse through the nodes, you check its adjacent nodes. The qty of adjacent nodes, is the number of edges that that node has. So create a variable that stores the number of edges, and append to that number each time you dequeue/pop. Once you have finished traversing, that is the number of edges that your graph has.
+time complexity: O(N), space complexity: O(1).
+2. In the actual implementation you can add a variable that stores the number of edges. When you add a neighbour to a node, also increment the graph instance's number of edges. If a neighbour is removed, decrement.
+3. If you have an adjacency list of a graph, then the number of edges is the length of the list divided by two.
+4. If you have an adjacency matrix, then the sum of non-zero entries divided by two is the number of edges.
+```
+
 4. Find the shortest path between two vertices
+
+```
+You either do a BFS/DFS from vertex "from" to vertex "to". You keep two lists of paths. The current one and the previously computed one. If the length of the current one is larger than the previously computed one, then reassign and continue, until the whole graph is traversed.
+
+Time complexity is O(N) and space complexity is O(N).
+```
 
 **Trees**
 
