@@ -376,10 +376,14 @@ time complexity: O(N), space complexity: O(1).
 4. Find the shortest path between two vertices
 
 ```
-You either do a BFS/DFS from vertex "from" to vertex "to". You keep two lists of paths. The current one and the previously computed one. If the length of the current one is larger than the previously computed one, then reassign and continue, until the whole graph is traversed.
+1. You either do a BFS/DFS from vertex "from" to vertex "to". You keep two lists of paths. The current one and the previously computed one. If the length of the current one is larger than the previously computed one, then reassign and continue, until the whole graph is traversed.
 
 Time complexity is O(N) and space complexity is O(N).
+
+2. Dijkstra's algorithm. (can be used for undirected weighted graphs). You create a table like: |vertex|shortest dist from (a)|previous vertex| that will explain all the shortest distances in the graph.
 ```
+
+Dijkstra's algorithm from above is explained <a href="<https://medium.com/basecs/finding-the-shortest-path-with-a-little-help-from-dijkstra-613149fbdc8e>">here</a>.
 
 **Trees**
 
