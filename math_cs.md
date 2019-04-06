@@ -27,19 +27,21 @@
 
 - Data Structures:
 
-  <img src="https://www.studytonight.com/data-structures/images/introduction-to-data-structures.gif" />
+  <img src="./static/images/data_structures.gif" alt="https://www.studytonight.com/data-structures/images/introduction-to-data-structures.gif" />
 
 - Stack - an abstract data type. Follows LIFO pattern. 
 
-  <img src="https://cdn-images-1.medium.com/max/1600/0*wTbA-8eCwNNefSlJ" style="display: block; margin: 0 auto; width:600px" />
+  <img src="./static/images/stack1.png" alt="Image credit: https://medium.freecodecamp.org/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3" />
 
   - basic operations are: pop, isEmpty, peek/top, push
 
 - Queue - also a linear abstract data type like a stack. This is literally a queue. FIFO. You push to the back and pop from the top. Unlike stacks where you push to the top and pop from the top. Common operations: enqueue (inserts an element to the back), dequeue (removes an element from the start of the queue), isEmpty, top
 
+<img src="./static/images/queue1.png" alt="Image credit: https://medium.freecodecamp.org/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3" />
+
 - Linked List
 
-  <img src="https://cdn-images-1.medium.com/max/1600/0*gL13qpd_LbZnix1-" />
+  <img src="./static/images/linked_list_1.png" alt="Image credit: https://medium.freecodecamp.org/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3" />
 
   - *InsertAtEnd* — Inserts given element at the end of the linked list
   - *InsertAtHead* — Inserts given element at the start/head of the linked list
@@ -52,7 +54,7 @@
 
   Is a collection of nodes/vertices connected through edges.
 
-  <img src="https://cdn-images-1.medium.com/max/1600/0*sWw9AAKt8YfUzIku"/>
+  <img src="./static/images/graph1.png" alt="Image credit: https://medium.freecodecamp.org/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3" />
 
   A graph can be represented either through adjacency list or a matrix:
 
@@ -60,15 +62,24 @@
 
   BFS and DFS algorithms taken from <a href="https://medium.com/basecs/breaking-down-breadth-first-search-cebe696709d9" alt="credit for: 'https://medium.com/basecs/breaking-down-breadth-first-search-cebe696709d9'">Medium</a>:
 
-  <img src="https://cdn-images-1.medium.com/max/2600/1*VM84VPcCQe0gSy44l9S5yA.jpeg" />
+  <img src="./static/images/dfs_bfs_1.jpeg" />
 
 - Tree
 
-- Trie
+Is a hierarchical data structure with nodes and edges. The key difference to graphs is that it does not contain cycles.
 
+<img src="./static/images/tree1.png" alt="Image credit: https://medium.freecodecamp.org/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3" />
+
+Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The most commonly used are Binary and Binary Search.
+
+- Trie
 - Hash Table
 
-A big chart of complexities for all of these data structures:
+
+
+### Time and Space complexities of data structures
+
+<img src="https://cdn-images-1.medium.com/max/1600/1*J8w0UxN-D5dqtWV4Dl3vXQ.png" alt="Image credit: https://medium.com/@info.gildacademy/time-and-space-complexity-of-data-structure-and-sorting-algorithms-588a57edf495" />
 
 
 
@@ -140,11 +151,11 @@ A big chart of complexities for all of these data structures:
    # O(n) - worst case
    ```
 
-3. Find the second minimum element of an array. Trivial, instead of having one variable for the min, have two: `min1` and `min2`.
+   3. Find the second minimum element of an array. Trivial, instead of having one variable for the min, have two: `min1` and `min2`.
 
-4. Perform merge sort on $[1, 20, 3, 12, 5, 9, 10, 2]​$.
+   4. Perform merge sort on $[1, 20, 3, 12, 5, 9, 10, 2]$.
 
-5. Rearrange negative and positive numbers such that the neg. numbers appear on the left and positive are on the right. The order should be preserved. Do not use additional data structures. Do it in $\mathcal{O}(n)$. For $[1, 7, -5, 9, -12, 15]$ as an example. Output is supposed to be like: $[-5, -12, 1, 7, 9, 15]​$.
+   5. Rearrange negative and positive numbers such that the neg. numbers appear on the left and positive are on the right. The order should be preserved. Do not use additional data structures. Do it in $\mathcal{O}(n)$. For $[1, 7, -5, 9, -12, 15]$ as an example. Output is supposed to be like: $[-5, -12, 1, 7, 9, 15]$.
 
    ```
    # pseudocode:
@@ -164,9 +175,11 @@ A big chart of complexities for all of these data structures:
    # O(N)
    ```
 
-6. Find the min of an array
-7. Find the second min of an array
-8. Find the nth min of the array in O(n) time. $[10, 2, 5, 6, 11, 3, 15]​$ think about placing a $10​$: $[2,5,6,3,10,11,15]​$ <- this is a correct index for $10​$. 
+   6. Find the min of an array
+
+   7. Find the second min of an array
+
+   8. Find the nth min of the array in O(n) time. $[10, 2, 5, 6, 11, 3, 15]$ think about placing a $10$: $[2,5,6,3,10,11,15]$ <- this is a correct index for $10$. 
 
 ```
 # initial thoughts
