@@ -70,7 +70,11 @@ Is a hierarchical data structure with nodes and edges. The key difference to gra
 
 <img src="./static/images/tree1.png" alt="Image credit: https://medium.freecodecamp.org/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3" />
 
-Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The most commonly used are Binary and Binary Search.
+Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The most commonly used are Binary and Binary Search. A Binary Tree node contains following parts.
+
+1. Data
+2. Pointer to left child
+3. Pointer to right child
 
 - Trie
 - Hash Table
