@@ -409,6 +409,37 @@ Dijkstra's algorithm from above is explained <a href="<https://medium.com/basecs
 
 **Trees**
 
+1. Find the height of a binary tree
+
+```
+If we have information about the number of nodes, then the height is: log_2 (N)
+```
+
+2. Find kth maximum value in a binary search tree
+
+```python
+# Do the in-order sort and then take kth value:
+
+def traverse(tree):
+	if tree:
+		traverse(tree.get_left_child())
+		print(tree.get_root_node())
+		traverse(tree.get_right_child())
+```
+
+3. Find nodes at "k" distance from the root
+
+   ```
+   If like in heaps, we add a property to each node i.e. the index; such that node i's children are 2*i and 2*i + 1. Then nodes at k distance from root are starting at index 2**k (where minimum value of k is 1, for root node) and there will be 2**k nodes in total. i.e. 2**k, 2**k + 1, ..., 2**(k+1) - 1. Cardinality of this set, as mentioned earlier will be 2**k.
+   ```
+
+4. Find ancestors of a given node in a binary tree
+
+```python
+def ancestors(tree):
+	print(ancestors(tree.get_root_node()))
+```
+
 **Trie**
 
 **Hash Table**
