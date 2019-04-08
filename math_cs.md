@@ -90,7 +90,10 @@ Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The 
 # Oh Glorious Problems (not exercises)
 
 - **Remember**: logic is king. Make small sound logical steps when solving anything. If every step is correct, you will arrive at a solution. Do not get discouraged if you fail. Sometimes you need to try a number of approaches to solve a problem.
-- 1. A census-taker knocks on a door, and asks the woman inside how
+
+  
+
+  1. A census-taker knocks on a door, and asks the woman inside how
      many children she has and how old they are.
      "I have three daughters, their ages are whole numbers, and the product of the ages
      is 36," says the mother.
@@ -99,6 +102,8 @@ Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The 
      "I wish you 'd tell me something more."
      "Okay, my oldest daughter Annie likes dogs."
      What are the ages of the three daughters? 
+
+  2. Are $\mathcal{O}(2^n)$ and $\mathcal{O}(2^{2n})$ equivalent?
 
 # Problems (CS)
 
