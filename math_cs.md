@@ -1,6 +1,6 @@
 # Oh Glorious Maths
 
-- **Discretizing** a pdf: $f(x) dx = \mathbb{P}[x \leq X < x + dx]​$
+- **Discretizing** a pdf: $f(x) dx = \mathbb{P}[x \leq X < x + dx]$
 - **Combinatorics**: How many unique pairs from $5$ can you choose:
   - $5 \choose 2​$ is
 
@@ -86,6 +86,24 @@ Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The 
 <img src="https://cdn-images-1.medium.com/max/1600/1*J8w0UxN-D5dqtWV4Dl3vXQ.png" alt="Image credit: https://medium.com/@info.gildacademy/time-and-space-complexity-of-data-structure-and-sorting-algorithms-588a57edf495" />
 
 
+
+# Maths Exercises
+
+1. Prove that the sequence:
+
+$$1, \frac{1}{2}, \frac{1}{3}, \frac{2}{3}, \frac{1}{5}, \frac{3}{4}, \frac{1}{7}, \frac{4}{5}, ...$$ 
+
+does not have a limit. The genral formula for the above is:
+
+$$x_n = \begin{cases} 1/n &\text{ for n=2k-1} \\ n/(n+2) &\text{if n=2k}  \end{cases}$$
+
+Solution:
+
+The definition of a limit is that there is a finite number of elements in an epsilon of the neighbourhood of a limit. So say for example that $\lim x_n = l$, then for some $\epsilon > 0$, there is a finite number of sequence elements outside of the **interval** $(l -\epsilon, l + \epsilon)$:
+
+<img src="./static/images/epsi.png" alt="stepik,mathematical analysis1, 1.4" />
+
+If, however, we have two limits, i.e. $\lim 1/n = 0$ and $\lim n/(n+2) = 1$, then there we be infinitely many elements in the neighbourhood of 0, as well as 1. So whatever epsilon neighbourhood we pick, there will not be finitely many elements of sequence outside of it. And therefore, the sequence in the problem does not have a limit.
 
 # Oh Glorious Problems (not exercises)
 
