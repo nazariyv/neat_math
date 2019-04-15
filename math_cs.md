@@ -1,14 +1,17 @@
 # Oh Glorious Maths
 
 - **Discretizing** a pdf: $f(x) dx = \mathbb{P}[x \leq X < x + dx]​$
-- **Combinatorics**: How many unique pairs from $5$ can you choose:
+- **Combinatorics**: How many unique pairs from $5​$ can you choose:
   - $5 \choose 2​$ is
 
 <img src="https://cdn-images-1.medium.com/max/1600/0*668VCMzhSTiYbvq3.png" style="display: block; margin: 0 auto; width:600px" />
 
 - **Permutations**: 3! = 3 * 2 * 1. How many permutations can you have? Suppose you have a banana, an apple, and a carrot. You can eat them in the following sequences: ABC, BAC, CAB, ACB, BCA, CBA; i.e. 6 in total. You start off by choosing when to eat an apple, three possibilities (you eat it first, second or third), once that is chosen, you have two possibilities of choosing when to eat a banana (if you decided to eat an apple first, then banana can be second or third; if you decided to eat an apple second, then banana can be first or last; if you choose to eat an apple last, then banana can be first or second; i.e. in each case, you have two options). Finally, once the order of eating an apple and banana is chosen, there is only one position for a carrot. Eat your veggies. 
+
 - $f(x) \sim g(x)$ means $\lim_{x \to a} \frac{f(x)}{g(x)} = c$
+
 - $\log_{b}(a) = c \iff b^c = a$
+
 - **Big-O** sorted (from fastest to slowest; big o is the asymptotic runtime): $\mathcal{O}(1)$ (constant time), $\mathcal{O}(\log N)$ (log time; divide and conquer), $\mathcal{O}(N)$ (linear time), $\mathcal{O}(N \log N)$ (merge search), | $\mathcal{O}(N^2)$ (quadric time), $\mathcal{O}(2^N)$ (exponential time; going through all of the subsets of a set), $\mathcal{O}(N!)$ (finding all permutations of a string), $\mathcal{O}(\infty)$ (flipping coin). Useful <a href='https://www.youtube.com/watch?v=zUUkiEllHG0&t='>video code examples</a>. 
   - Definition: for some $n \geq n_1​$, $f(n) = \mathcal{O}(g(n))​$ means: $|f(n)| \leq c|g(n)|​$ for some $c \in \mathbb{R}​$
   - some properties. $\mathcal{O}(c + n) = \mathcal{O}(n)$ for some $c > 0$.
@@ -16,8 +19,28 @@
   - example. Nested loop. `for (i=0; i<n; i++) { for (j=i; j<n; j++) }`. Notice that the inner loop runs:
     $n, n-1, n-2, ..., 3, 2, 1​$ number of times. This is $n(n+1)/2​$. Thus $\mathcal{O}(n^2)​$
   - Imagine you have a sorted array. This is log time. Divide and conquer
+
 - How many times can you split 32 into even parts? $2^5$, $5$ times. $\log_2 (32) = 5$, that is why divide and conquer is $\mathcal{O}(\log n)$. Merge sort is $\mathcal{O}(n \log n)$ because you also do $\mathcal{O}(n)$ operations when mergin sorted arrays. (check out the code in the python scripts folder and the exercise below).
+
 - In base 10, a fraction converts to a terminating decimal if and only if the denominator only has prime factors of 2 and 5.
+
+- Integrating wrt. to a function:
+
+  <img src='./static/images/integrate_wrt_a_function.png' alt="https://math.stackexchange.com/questions/295383/integration-of-a-function-with-respect-to-another-function" />
+
+  $$\frac{dF(x)}{dx} = f(x) \\ dF(x) \sim f(x) dx$$
+
+  $$\int dx^2 = ?$$
+
+  If $dF(x) = dx^2$, then $F(x) = x^2$, thus $\frac{dF(x)}{dx} = 2x$ and so
+
+  $$dF(x) = 2x dx​$$, so $\int dx^2 = \int 2x dx = x^2 +c​$. Keep in mind that $\frac{dF(x)}{dx} = \lim\limits_{h \to 0} \frac{F(x+h)-F(x)}{h}​$ in a rigorous sense. So multiplying by $dx​$ is slightly weird. But in an equivalent sense, makes more sense. Therefore:
+
+  $$\int f(x) d(g(x)) = \int f(x) \cdot g'(x) dx$$
+
+  Motivating example from the SO answer:
+
+  $$\int \sin^2 x \cos x dx = \int \sin^2 x d(\sin x) = \int u^2 du = \frac{u^3}{3} + c = \frac{\sin^3 x}{3} + c​$$
 
 # Oh Glorious CS
 
@@ -104,6 +127,58 @@ Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The 
      What are the ages of the three daughters? 
 
   2. Are $\mathcal{O}(2^n)$ and $\mathcal{O}(2^{2n})$ equivalent?
+
+  3.  How to test if the data is normal?
+
+     Solution:
+
+     - Visual methods: q-q plot, histogram (bell shaped), box plot, p-p plot.
+
+       <img src='./static/images/box_plot.png' alt ="http://blog.catchpoint.com/wp-content/uploads/2017/02/Screen-Shot-2017-02-15-at-1.17.45-PM.png"/>
+
+     - Normality tests: 
+
+       1. Kolmogorov - Smirnov test.
+
+          The empirical distribution function, $F_n$ for $n$ iid ordered observations $X_i$ is defined as $$F_n (x) = \frac{1}{n} \sum_{i=1}^n I_{[-\infty, x]} (X_i)$$. i.e. this is a step function. Also, $I_{[-\infty, x]}(X_i)$ is the indicator function, equal to $1$ if $X_i \leq x$ and equal to $0$ otherwise.
+
+          <img src='./static/images/ecdf.png' />
+
+          So at each observation, the step function increases by $1/n$.
+
+          The Kolmogorov - Smirnov statistic for a given cumulative distribution function $F(x)​$ is $$D_n = \sup\limits_{x} |F_n (x) - F(x)|​$$. 
+
+          <img src="./static/images/KS_Example.png" alt="https://en.wikipedia.org/wiki/File:KS_Example.png" />
+
+          By the Glivenko-Cantelli theorem, if the sample comes from distribution $F(x)$, then $D_n$ converges to $0$ almost surely (if the probability of the limit is $1$). i.e. the largest absolute discrepancy between the sample empirical distribution function and the theoretical CDF will be zero as $n$ goes to infinity. In practice, this statistic required a very large number of data points (in comparison to other goodness of fit criteria). The null hypothesis is that empirical and theoretical are of the same distribution family. Note that this can also be used to test if two empirical sets of data come from the same distribution:
+
+          $$D_{n,m} = \sup\limits_{x} |F_{1,n}(x)-F_{2,m}(x)|$$
+
+       2. Anderson-Darling test.
+
+          The Anderson-Darling and Cramer-von Mises statistics belong to the class of quadratic EDF statistics. If the hypothesized distribution is $F$, and empirical (sample) cumulative distribution function is $F_n$, then the quadratic EDF statistics measure the distance between $F$ and $F_n$ by
+
+          $$n \int_{-\infty}^{\infty} (F_n(x) - F(x))^2 w(x) dF(x)​$$. Where $w(x)​$ is a weighting function. If $w(x) = 1​$ this is Cramer-von Mises test. If $w(x) = [F(x)(1-F(x))]^{-1}​$, this is Anderson-Darling statistic:
+
+          $$A^2 = n \int_{-\infty}^{\infty} \frac{(F_n(x) - F(x))^2}{F(x) (1- F(x))}dF(x)​$$, here is an illustration of the weights at tails:
+
+          <img src='./static/images/anderson_weight.png' />
+
+     For more <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3693611/">answers</a>.
+
+  4. Show that a set is convex if and only if its intersection with any line is convex. Show that a set is affine if and only if its intersection with any line is affine.
+
+     
+
+  5. Say you are on a game show [historical sidenote: this question was first played on the 60s American game show Let's Make a Deal, hosted by Monty Hall], and there are three closed doors. Behind one door is a car, the prize you dream of, and behind the other two are goats. You pick a door. The host, who knows what's behind each door, opens another which reveals a goat. Now, the host lets you make another choice: should you stick with you first door choice, or should you switch and pick a different door, in order to win the car?
+
+     Solution:
+
+     
+
+# Exercises (Finance)
+
+1. I don't know anything about bond pricing, but I've heard people use something called the discount rate when they price bonds. Can you explain what this "discount rate" is? Why is it important? Where do I get its value? What is the current discount rate (as of today)? When I price a 30-year bond, should I use today's discount rate or should I use a different discount rate for each of the next 30 years?
 
 # Problems (CS)
 
