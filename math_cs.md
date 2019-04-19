@@ -108,7 +108,18 @@ Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The 
 
 <img src="https://cdn-images-1.medium.com/max/1600/1*J8w0UxN-D5dqtWV4Dl3vXQ.png" alt="Image credit: https://medium.com/@info.gildacademy/time-and-space-complexity-of-data-structure-and-sorting-algorithms-588a57edf495" />
 
+# Oh Glorious Cool Things
 
+- To run interactively your `.py` file in the terminal: `$python -i file.py`. 
+
+- ```python
+  'foo {}'.format('bar') # uses str to print
+  'foo bar'
+  'foo {!r}'.format('bar') # uses repr to print
+  "foo 'bar'"
+  ```
+
+  
 
 # Maths Exercises
 
