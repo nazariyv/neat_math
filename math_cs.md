@@ -2,7 +2,7 @@
 
 - **Discretizing** a pdf: $f(x) dx = \mathbb{P}[x \leq X < x + dx]$
 - **Combinatorics**: How many unique pairs from $5$ can you choose:
-  - $5 \choose 2​$ is
+  - $5 \choose 2$ is
 
 <img src="https://cdn-images-1.medium.com/max/1600/0*668VCMzhSTiYbvq3.png" style="display: block; margin: 0 auto; width:600px" />
 
@@ -13,11 +13,11 @@
 - $\log_{b}(a) = c \iff b^c = a$
 
 - **Big-O** sorted (from fastest to slowest; big o is the asymptotic runtime): $\mathcal{O}(1)$ (constant time), $\mathcal{O}(\log N)$ (log time; divide and conquer), $\mathcal{O}(N)$ (linear time), $\mathcal{O}(N \log N)$ (merge search), | $\mathcal{O}(N^2)$ (quadric time), $\mathcal{O}(2^N)$ (exponential time; going through all of the subsets of a set), $\mathcal{O}(N!)$ (finding all permutations of a string), $\mathcal{O}(\infty)$ (flipping coin). Useful <a href='https://www.youtube.com/watch?v=zUUkiEllHG0&t='>video code examples</a>. 
-  - Definition: for some $n \geq n_1​$, $f(n) = \mathcal{O}(g(n))​$ means: $|f(n)| \leq c|g(n)|​$ for some $c \in \mathbb{R}​$
+  - Definition: for some $n \geq n_1$, $f(n) = \mathcal{O}(g(n))$ means: $|f(n)| \leq c|g(n)|$ for some $c \in \mathbb{R}$
   - some properties. $\mathcal{O}(c + n) = \mathcal{O}(n)$ for some $c > 0$.
-  - $c \mathcal{O}(n) = \mathcal{O}(n)​$
+  - $c \mathcal{O}(n) = \mathcal{O}(n)$
   - example. Nested loop. `for (i=0; i<n; i++) { for (j=i; j<n; j++) }`. Notice that the inner loop runs:
-    $n, n-1, n-2, ..., 3, 2, 1​$ number of times. This is $n(n+1)/2​$. Thus $\mathcal{O}(n^2)​$
+    $n, n-1, n-2, ..., 3, 2, 1$ number of times. This is $n(n+1)/2$. Thus $\mathcal{O}(n^2)$
   - Imagine you have a sorted array. This is log time. Divide and conquer
 
 - How many times can you split 32 into even parts? $2^5$, $5$ times. $\log_2 (32) = 5$, that is why divide and conquer is $\mathcal{O}(\log n)$. Merge sort is $\mathcal{O}(n \log n)$ because you also do $\mathcal{O}(n)$ operations when mergin sorted arrays. (check out the code in the python scripts folder and the exercise below).
@@ -34,13 +34,13 @@
 
   If $dF(x) = dx^2$, then $F(x) = x^2$, thus $\frac{dF(x)}{dx} = 2x$ and so
 
-  $$dF(x) = 2x dx​$$, so $\int dx^2 = \int 2x dx = x^2 +c​$. Keep in mind that $\frac{dF(x)}{dx} = \lim\limits_{h \to 0} \frac{F(x+h)-F(x)}{h}​$ in a rigorous sense. So multiplying by $dx​$ is slightly weird. But in an equivalent sense, makes more sense. Therefore:
+  $$dF(x) = 2x dx$$, so $\int dx^2 = \int 2x dx = x^2 +c$. Keep in mind that $\frac{dF(x)}{dx} = \lim\limits_{h \to 0} \frac{F(x+h)-F(x)}{h}$ in a rigorous sense. So multiplying by $dx$ is slightly weird. But in an equivalent sense, makes more sense. Therefore:
 
   $$\int f(x) d(g(x)) = \int f(x) \cdot g'(x) dx$$
 
   Motivating example from the SO answer:
 
-  $$\int \sin^2 x \cos x dx = \int \sin^2 x d(\sin x) = \int u^2 du = \frac{u^3}{3} + c = \frac{\sin^3 x}{3} + c​$$
+  $$\int \sin^2 x \cos x dx = \int \sin^2 x d(\sin x) = \int u^2 du = \frac{u^3}{3} + c = \frac{\sin^3 x}{3} + c$$
 
 # Oh Glorious CS
 
@@ -119,7 +119,84 @@ Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The 
   "foo 'bar'"
   ```
 
+- To make a directory and cd into it:
+
+  ```
+  mkdir context-manager && cd $_
+  ```
+
+  `$_` is the most recent command, in this case `context-manager`. `&&` is here for chaining purpose, i.e. if `mkdir` command fails -> do not cd.
+
+
+
+# VIM Remembers
+
+- To split the window: `:vsplit` or `:split`. To navigate: `Ctrl + W` and arrow key, or `Ctrl + W, W`
+
+- To create a new tab: `:tabnew billion_dollar_code.py`
+
+- To have vim code and console: use `tmux`
+
+- To comment block: `Ctrl + v` -> select where you want the comment, `I`, then write `#`, now press: `Esc`.
+
+- To duplicate the line: `yy` or `Y`.
+
+- To copy: `y` to past after cursor: `p`, before: `P`.
+
+- To insert text on the line below: `O`
+
   
+
+# I am Expert Python Programmer
+
+
+Real lessons from the PyData 2017 - James Powell lesson:
+Python is the language oriented around protocols
+There is some behaviour, some syntax, some byte-code or some top-level
+function and there is a way for you to tell Python how to implement that
+on an arbitrary object via underscore methods. The exact correspondance
+is usually guessable, but if you cannot guess it:
+google python data-model and you will find all the different methods and
+all of the caveats of their use.
+Python is a very simplistic language in terms of its execution model.
+Code runs from toop to bottom
+And things which would not be executable statements in other languages
+like class statements, function definitions or generator definitions
+are actually executable code in Python
+Because it's executable code, not only can you hook into them
+but you can define functions within functions base off the runtime
+data. Define classes withing functions based off some runtime
+information you have about them
+How these impace specific features?
+Metaclasses - some hook into the classes construction process.
+Because classes are constructed in run-time, you hook right into
+them. And because you can hook into subclass creation, you can ask it
+some questions like: "Do you have these methods implemented?"
+But the meaning behind it is quite simple. You have the library code
+and you have user code. When you sit on the library side, how
+do you make sure that the users don't screw up. How do you enforce
+the constraint from the library code to the user code.
+All that it takes is some way to hook into the process of how
+user classes are instantiated. That's merely what the metaclass is.
+In Python standard library there are solutions to these.
+In ABC there is an ABC metaclass there are decorators to mark
+the methods and abstract methods so that you do not have to write
+the metaclass yourself.
+Generators - is a way to take a computation that would otherwise run eagerly
+
+from the injection of its parameters to final computation and interleave
+it with other code by adding yield points where you can yield the
+intermediate values or one small piece of computation and also yield
+back the control to the caller. In that vein you can thinkg about
+the generator as the one long code and break it into small parts
+where you run small sub units of computation, where the user can step in
+and do whatever they want
+Context Managers - a way to take set up action and tear down action
+and ensure that they happen in concordance with each other. If Set up
+action occurs, ensure that teard down action occurs, even if there is an
+error somewhere.
+Remember what the features are and what they are for! That is the most
+important thing.
 
 # Maths Exercises
 
@@ -175,7 +252,7 @@ If, however, we have two limits, i.e. $\lim 1/n = 0$ and $\lim n/(n+2) = 1$, the
 
           So at each observation, the step function increases by $1/n$.
 
-          The Kolmogorov - Smirnov statistic for a given cumulative distribution function $F(x)​$ is $$D_n = \sup\limits_{x} |F_n (x) - F(x)|​$$. 
+          The Kolmogorov - Smirnov statistic for a given cumulative distribution function $F(x)$ is $$D_n = \sup\limits_{x} |F_n (x) - F(x)|$$. 
 
           <img src="./static/images/KS_Example.png" alt="https://en.wikipedia.org/wiki/File:KS_Example.png" />
 
@@ -187,9 +264,9 @@ If, however, we have two limits, i.e. $\lim 1/n = 0$ and $\lim n/(n+2) = 1$, the
 
           The Anderson-Darling and Cramer-von Mises statistics belong to the class of quadratic EDF statistics. If the hypothesized distribution is $F$, and empirical (sample) cumulative distribution function is $F_n$, then the quadratic EDF statistics measure the distance between $F$ and $F_n$ by
 
-          $$n \int_{-\infty}^{\infty} (F_n(x) - F(x))^2 w(x) dF(x)​$$. Where $w(x)​$ is a weighting function. If $w(x) = 1​$ this is Cramer-von Mises test. If $w(x) = [F(x)(1-F(x))]^{-1}​$, this is Anderson-Darling statistic:
+          $$n \int_{-\infty}^{\infty} (F_n(x) - F(x))^2 w(x) dF(x)$$. Where $w(x)$ is a weighting function. If $w(x) = 1$ this is Cramer-von Mises test. If $w(x) = [F(x)(1-F(x))]^{-1}$, this is Anderson-Darling statistic:
 
-          $$A^2 = n \int_{-\infty}^{\infty} \frac{(F_n(x) - F(x))^2}{F(x) (1- F(x))}dF(x)​$$, here is an illustration of the weights at tails:
+          $$A^2 = n \int_{-\infty}^{\infty} \frac{(F_n(x) - F(x))^2}{F(x) (1- F(x))}dF(x)$$, here is an illustration of the weights at tails:
 
           <img src='./static/images/anderson_weight.png' />
 
