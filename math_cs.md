@@ -112,6 +112,7 @@ Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The 
 
 - To run interactively your `.py` file in the terminal: `$python -i file.py`. 
 - `git remote set-url origin git@github.com:nazariyv/node_learn.git`
+- to save dev dep: `npm i nodemon --save-dev`
 
 for sshing
 
