@@ -695,3 +695,4 @@ I hope this explanation was a bit more down to earth than buckets and functions 
 - Interneting is hard - is a series of HTML & CSS tutorials that are kicking ass:
   https://internetingishard.com/html-and-css
 - Linked I used for some of the exercises in the CS section: https://medium.freecodecamp.org/the-top-data-structures-you-should-know-for-your-next-coding-interview-36af0831f5e3
+- for http status codes: https://httpstatuses.com
