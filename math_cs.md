@@ -2,7 +2,7 @@
 
 - **Discretizing** a pdf: $f(x) dx = \mathbb{P}[x \leq X < x + dx]$
 - **Combinatorics**: How many unique pairs from $5$ can you choose:
-  - $5 \choose 2​$ is
+  - $5 \choose 2$ is
 
 <img src="https://cdn-images-1.medium.com/max/1600/0*668VCMzhSTiYbvq3.png" style="display: block; margin: 0 auto; width:600px" />
 
@@ -13,11 +13,11 @@
 - $\log_{b}(a) = c \iff b^c = a$
 
 - **Big-O** sorted (from fastest to slowest; big o is the asymptotic runtime): $\mathcal{O}(1)$ (constant time), $\mathcal{O}(\log N)$ (log time; divide and conquer), $\mathcal{O}(N)$ (linear time), $\mathcal{O}(N \log N)$ (merge search), | $\mathcal{O}(N^2)$ (quadric time), $\mathcal{O}(2^N)$ (exponential time; going through all of the subsets of a set), $\mathcal{O}(N!)$ (finding all permutations of a string), $\mathcal{O}(\infty)$ (flipping coin). Useful <a href='https://www.youtube.com/watch?v=zUUkiEllHG0&t='>video code examples</a>. 
-  - Definition: for some $n \geq n_1​$, $f(n) = \mathcal{O}(g(n))​$ means: $|f(n)| \leq c|g(n)|​$ for some $c \in \mathbb{R}​$
+  - Definition: for some $n \geq n_1$, $f(n) = \mathcal{O}(g(n))$ means: $|f(n)| \leq c|g(n)|$ for some $c \in \mathbb{R}$
   - some properties. $\mathcal{O}(c + n) = \mathcal{O}(n)$ for some $c > 0$.
-  - $c \mathcal{O}(n) = \mathcal{O}(n)​$
+  - $c \mathcal{O}(n) = \mathcal{O}(n)$
   - example. Nested loop. `for (i=0; i<n; i++) { for (j=i; j<n; j++) }`. Notice that the inner loop runs:
-    $n, n-1, n-2, ..., 3, 2, 1​$ number of times. This is $n(n+1)/2​$. Thus $\mathcal{O}(n^2)​$
+    $n, n-1, n-2, ..., 3, 2, 1$ number of times. This is $n(n+1)/2$. Thus $\mathcal{O}(n^2)$
   - Imagine you have a sorted array. This is log time. Divide and conquer
 
 - How many times can you split 32 into even parts? $2^5$, $5$ times. $\log_2 (32) = 5$, that is why divide and conquer is $\mathcal{O}(\log n)$. Merge sort is $\mathcal{O}(n \log n)$ because you also do $\mathcal{O}(n)$ operations when mergin sorted arrays. (check out the code in the python scripts folder and the exercise below).
@@ -34,13 +34,13 @@
 
   If $dF(x) = dx^2$, then $F(x) = x^2$, thus $\frac{dF(x)}{dx} = 2x$ and so
 
-  $$dF(x) = 2x dx​$$, so $\int dx^2 = \int 2x dx = x^2 +c​$. Keep in mind that $\frac{dF(x)}{dx} = \lim\limits_{h \to 0} \frac{F(x+h)-F(x)}{h}​$ in a rigorous sense. So multiplying by $dx​$ is slightly weird. But in an equivalent sense, makes more sense. Therefore:
+  $$dF(x) = 2x dx$$, so $\int dx^2 = \int 2x dx = x^2 +c$. Keep in mind that $\frac{dF(x)}{dx} = \lim\limits_{h \to 0} \frac{F(x+h)-F(x)}{h}$ in a rigorous sense. So multiplying by $dx$ is slightly weird. But in an equivalent sense, makes more sense. Therefore:
 
   $$\int f(x) d(g(x)) = \int f(x) \cdot g'(x) dx$$
 
   Motivating example from the SO answer:
 
-  $$\int \sin^2 x \cos x dx = \int \sin^2 x d(\sin x) = \int u^2 du = \frac{u^3}{3} + c = \frac{\sin^3 x}{3} + c​$$
+  $$\int \sin^2 x \cos x dx = \int \sin^2 x d(\sin x) = \int u^2 du = \frac{u^3}{3} + c = \frac{\sin^3 x}{3} + c$$
 
 # Oh Glorious CS
 
@@ -108,9 +108,12 @@ Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The 
 
 <img src="https://cdn-images-1.medium.com/max/1600/1*J8w0UxN-D5dqtWV4Dl3vXQ.png" alt="Image credit: https://medium.com/@info.gildacademy/time-and-space-complexity-of-data-structure-and-sorting-algorithms-588a57edf495" />
 
-# Oh Glorious Cool Things
+# Oh Glorious Cool Commands
 
 - To run interactively your `.py` file in the terminal: `$python -i file.py`. 
+- `git remote set-url origin git@github.com:nazariyv/node_learn.git`
+
+for sshing
 
 - ```python
   'foo {}'.format('bar') # uses str to print
@@ -119,7 +122,9 @@ Types of trees: N-ary, Balanced, Binary, Binary Search, AVL, Red Blac, 2-3. The 
   "foo 'bar'"
   ```
 
-  
+- For shell evaluation piping:
+
+  `$( env | grep 's[0-9]' )`
 
 # Maths Exercises
 
@@ -175,7 +180,7 @@ If, however, we have two limits, i.e. $\lim 1/n = 0$ and $\lim n/(n+2) = 1$, the
 
           So at each observation, the step function increases by $1/n$.
 
-          The Kolmogorov - Smirnov statistic for a given cumulative distribution function $F(x)​$ is $$D_n = \sup\limits_{x} |F_n (x) - F(x)|​$$. 
+          The Kolmogorov - Smirnov statistic for a given cumulative distribution function $F(x)$ is $$D_n = \sup\limits_{x} |F_n (x) - F(x)|$$. 
 
           <img src="./static/images/KS_Example.png" alt="https://en.wikipedia.org/wiki/File:KS_Example.png" />
 
@@ -187,9 +192,9 @@ If, however, we have two limits, i.e. $\lim 1/n = 0$ and $\lim n/(n+2) = 1$, the
 
           The Anderson-Darling and Cramer-von Mises statistics belong to the class of quadratic EDF statistics. If the hypothesized distribution is $F$, and empirical (sample) cumulative distribution function is $F_n$, then the quadratic EDF statistics measure the distance between $F$ and $F_n$ by
 
-          $$n \int_{-\infty}^{\infty} (F_n(x) - F(x))^2 w(x) dF(x)​$$. Where $w(x)​$ is a weighting function. If $w(x) = 1​$ this is Cramer-von Mises test. If $w(x) = [F(x)(1-F(x))]^{-1}​$, this is Anderson-Darling statistic:
+          $$n \int_{-\infty}^{\infty} (F_n(x) - F(x))^2 w(x) dF(x)$$. Where $w(x)$ is a weighting function. If $w(x) = 1$ this is Cramer-von Mises test. If $w(x) = [F(x)(1-F(x))]^{-1}$, this is Anderson-Darling statistic:
 
-          $$A^2 = n \int_{-\infty}^{\infty} \frac{(F_n(x) - F(x))^2}{F(x) (1- F(x))}dF(x)​$$, here is an illustration of the weights at tails:
+          $$A^2 = n \int_{-\infty}^{\infty} \frac{(F_n(x) - F(x))^2}{F(x) (1- F(x))}dF(x)$$, here is an illustration of the weights at tails:
 
           <img src='./static/images/anderson_weight.png' />
 
