@@ -122,9 +122,90 @@ for sshing
   "foo 'bar'"
   ```
 
+<<<<<<< HEAD
 - For shell evaluation piping:
 
   `$( env | grep 's[0-9]' )`
+=======
+- To make a directory and cd into it:
+
+  ```
+  mkdir context-manager && cd $_
+  ```
+
+  `$_` is the most recent command, in this case `context-manager`. `&&` is here for chaining purpose, i.e. if `mkdir` command fails -> do not cd.
+
+
+
+# VIM Remembers
+
+- To split the window: `:vsplit` or `:split`. To navigate: `Ctrl + W` and arrow key, or `Ctrl + W, W`
+
+- To create a new tab: `:tabnew billion_dollar_code.py`
+
+- To have vim code and console: use `tmux`
+
+- To comment block: `Ctrl + v` -> select where you want the comment, `I`, then write `#`, now press: `Esc`.
+
+- To duplicate the line: `yy` or `Y`.
+
+- To copy: `y` to past after cursor: `p`, before: `P`.
+
+- To insert text on the line below: `O`
+
+  
+>>>>>>> a2217dadb8cd5c5112bcfbc4c8bd79e3ec918e64
+
+# I am Expert Python Programmer
+
+
+Real lessons from the PyData 2017 - James Powell lesson:
+Python is the language oriented around protocols
+There is some behaviour, some syntax, some byte-code or some top-level
+function and there is a way for you to tell Python how to implement that
+on an arbitrary object via underscore methods. The exact correspondance
+is usually guessable, but if you cannot guess it:
+google python data-model and you will find all the different methods and
+all of the caveats of their use.
+Python is a very simplistic language in terms of its execution model.
+Code runs from toop to bottom
+And things which would not be executable statements in other languages
+like class statements, function definitions or generator definitions
+are actually executable code in Python
+Because it's executable code, not only can you hook into them
+but you can define functions within functions base off the runtime
+data. Define classes withing functions based off some runtime
+information you have about them
+How these impace specific features?
+Metaclasses - some hook into the classes construction process.
+Because classes are constructed in run-time, you hook right into
+them. And because you can hook into subclass creation, you can ask it
+some questions like: "Do you have these methods implemented?"
+But the meaning behind it is quite simple. You have the library code
+and you have user code. When you sit on the library side, how
+do you make sure that the users don't screw up. How do you enforce
+the constraint from the library code to the user code.
+All that it takes is some way to hook into the process of how
+user classes are instantiated. That's merely what the metaclass is.
+In Python standard library there are solutions to these.
+In ABC there is an ABC metaclass there are decorators to mark
+the methods and abstract methods so that you do not have to write
+the metaclass yourself.
+Generators - is a way to take a computation that would otherwise run eagerly
+
+from the injection of its parameters to final computation and interleave
+it with other code by adding yield points where you can yield the
+intermediate values or one small piece of computation and also yield
+back the control to the caller. In that vein you can thinkg about
+the generator as the one long code and break it into small parts
+where you run small sub units of computation, where the user can step in
+and do whatever they want
+Context Managers - a way to take set up action and tear down action
+and ensure that they happen in concordance with each other. If Set up
+action occurs, ensure that teard down action occurs, even if there is an
+error somewhere.
+Remember what the features are and what they are for! That is the most
+important thing.
 
 # Maths Exercises
 
