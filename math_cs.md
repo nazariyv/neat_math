@@ -127,7 +127,8 @@ for sshing
 - For shell evaluation piping:
 
   `$( env | grep 's[0-9]' )`
-=======
+  =======
+
 - To make a directory and cd into it:
 
   ```
@@ -135,6 +136,8 @@ for sshing
   ```
 
   `$_` is the most recent command, in this case `context-manager`. `&&` is here for chaining purpose, i.e. if `mkdir` command fails -> do not cd.
+  
+- If Software Install on Ubuntu hangs: sudo dpkg --configure -a
 
 
 
