@@ -122,6 +122,8 @@ for sshing
   'foo {!r}'.format('bar') # uses repr to print
   "foo 'bar'"
   ```
+- db.getCollection('BTC-USD').find({}).sort({timestamp:-1}).limit(1) # for Max
+- db.getCollection('BTC-USD').find({}).sort({timestamp:+1}).limit(1) # for Min
 
 <<<<<<< HEAD
 - For shell evaluation piping:
