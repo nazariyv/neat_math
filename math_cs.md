@@ -125,7 +125,6 @@ for sshing
 - db.getCollection('BTC-USD').find({}).sort({timestamp:-1}).limit(1) # for Max
 - db.getCollection('BTC-USD').find({}).sort({timestamp:+1}).limit(1) # for Min
 
-<<<<<<< HEAD
 - For shell evaluation piping:
 
   `$( env | grep 's[0-9]' )`
@@ -140,6 +139,53 @@ for sshing
   `$_` is the most recent command, in this case `context-manager`. `&&` is here for chaining purpose, i.e. if `mkdir` command fails -> do not cd.
   
 - If Software Install on Ubuntu hangs: sudo dpkg --configure -a
+
+- How to rebase:
+
+- ```
+  ## How to update your branch from master
+  
+  Update your master:
+  ​```git checkout master
+  git fetch -a -p
+  git reset origin/master --hard```
+  
+  Note: **will remove your local changes in master branch**.
+  
+  
+  If you want to keep your changes in master branch, use another workflow
+  ​```git checkout master
+  git fetch -a -p
+  git rebase origin/master```
+  
+  Rebase your feature branch to master:
+  ​```git checkout <YOUR_BRANCH>
+  git fetch -ap
+  git rebase -i origin/master```
+  **!!!** to cancel rebase use “git rebase --abort”
+  
+  1. text editor with commit messages will be opened
+  1. check commit list: you have to have only commits from your branch, otherwise, remove unnecessary
+  1. save file and exit editor
+  1. if you met conflicts during rebase:
+    1. edit conflicts files manually or using merge tool (like IDEA or Meld)
+    1. mark files as fixed by “git add”
+    1. git rebase --continue
+    1. probably you will need to repeat this action several times
+  1. ????
+  1. PROFIT!
+  
+  ## How to propagate your changes to bitbucket
+  ​```git push origin <YOUR_BRANCH> -f```
+  Force is required after rebase to master
+  
+  ## How to prepare your branch for merge
+  1. Rebase your branch to master and squash/edit commit for a nice history view
+  1. Make sure that your every commit is following the code policy for [python]((manual/python.md)) and [golang](manual/golang.md) and respects the golang code format (make fmt)
+  1. Make sure that tests are passing on **your every commit** (applicable on feature workflow only)
+  1. Propagate your changes to bitbucket
+  1. Create pull request and assign it to reviewer
+  ```
 
 
 
@@ -158,9 +204,6 @@ for sshing
 - To copy: `y` to past after cursor: `p`, before: `P`.
 
 - To insert text on the line below: `O`
-
-  
->>>>>>> a2217dadb8cd5c5112bcfbc4c8bd79e3ec918e64
 
 # I am Expert Python Programmer
 
